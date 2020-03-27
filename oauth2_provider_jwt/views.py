@@ -22,8 +22,7 @@ class MissingIdAttribute(Exception):
 class JWTAuthorizationView(views.AuthorizationView):
 
     def get(self, request, *args, **kwargs):
-        response = super(JWTAuthorizationView, self).get(request, *args,
-                                                         **kwargs)
+        response = super().get(request, *args, **kwargs)
         if request.GET.get('response_type', None) == 'token' \
                 and response.status_code == 302:
             url = urlparse(response.url)
@@ -79,7 +78,7 @@ class TokenView(views.TokenView):
             return False
 
     def post(self, request, *args, **kwargs):
-        response = super(TokenView, self).post(request, *args, **kwargs)
+        response = super().post(request, *args, **kwargs)
         content = ast.literal_eval(response.content.decode("utf-8"))
         if response.status_code == 200 and 'access_token' in content:
             if not TokenView._is_jwt_config_set():

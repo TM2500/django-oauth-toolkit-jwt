@@ -147,10 +147,7 @@ class JWTAuthentication(BaseAuthentication):
         """
         Adds to the session payload details so they can be used anytime.
         """
-        try:
-            items = payload.iteritems()
-        except AttributeError:  # python 3.6
-            items = payload.items()
+        items = payload.items()
         for k, v in items:
             if k not in ('iat', 'exp'):
                 request.session['jwt_{}'.format(k)] = v
