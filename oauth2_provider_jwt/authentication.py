@@ -17,7 +17,7 @@ class JwtToken(dict):
     Django Oauth Toolkit permissions like `TokenHasScope`.
     """
     def __init__(self, payload):
-        super(JwtToken, self).__init__(**payload)
+        super().__init__(**payload)
 
     def __getattr__(self, item):
         return self[item]

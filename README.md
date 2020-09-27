@@ -156,7 +156,7 @@ JWT_PAYLOAD_ENRICHER = 'myapp.jwt_utils.payload_enricher'
 
 # myproject/myapp/jwt_utils.py
 
-def payload_enricher(request):
+def payload_enricher(request, content):
     return {
         'sub': 'mysubject',
         ...

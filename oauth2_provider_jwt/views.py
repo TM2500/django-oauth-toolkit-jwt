@@ -47,7 +47,7 @@ class TokenView(views.TokenView):
         payload_enricher = getattr(settings, 'JWT_PAYLOAD_ENRICHER', None)
         if payload_enricher:
             fn = import_string(payload_enricher)
-            extra_data = fn(request)
+            extra_data = fn(request, content)
 
         if 'scope' in content:
             extra_data['scope'] = content['scope']
